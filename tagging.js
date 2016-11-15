@@ -8,7 +8,7 @@ function func_tagging(stri)
         console.log('highlighted');
 
         prop.value=stri;
-	prop2.value = 'background-color:yellow';
+	prop2.value = 'background-color:red';
         span.setAttributeNode(prop);
         span.setAttributeNode(prop2);
         var sel = window.getSelection();
