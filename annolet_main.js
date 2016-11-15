@@ -426,11 +426,11 @@ function annolet_main() {
         {
             search_function();
         }
-        else if (annolet_btn == 11)
+        else if (annolet_btn == 12)
         {
             store_changes();
         }
-        else if (annolet_btn == 11)
+        else if (annolet_btn == 13)
         {
             retrieve_changes();
         }
