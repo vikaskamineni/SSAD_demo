@@ -428,10 +428,12 @@ function annolet_main() {
         }
         else if (annolet_btn == 12)
         {
+            console.log("entered");
             store_changes();
         }
         else if (annolet_btn == 13)
         {
+            console.log("enetered");
             retrieve_changes();
         }
          else if (annolet_btn===0)
