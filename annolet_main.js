@@ -33,6 +33,8 @@ function annolet_createContainer() {
     "<li id='annolet' class=annolet-tools-menu-item id=audio-btn onclick='annolet_btn=9;'>audio</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=audio-btn onclick='annolet_btn=10;'>edit</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=audio-btn onclick='annolet_btn=11;'>Modify</li>"+
+    "<li id='annolet' class=annolet-tools-menu-item id=audio-btn onclick='annolet_btn=12;'>Save</li>"+
+    "<li id='annolet' class=annolet-tools-menu-item id=audio-btn onclick='annolet_btn=13;'>Retrieve</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=exit-btn onclick='annolet_btn=0;'>exit</li>"+
     "</ul>"; //HTML to create a list of options
 }
@@ -219,6 +221,7 @@ function anno_edit(xpath)
         document.getElementsByTagName("body")[0].setAttribute('contenteditable','true');
 }
 
+
 function anno_remove_edit(xpath)
 {
   document.getElementsByTagName("body")[0].removeAttribute('contenteditable');
@@ -234,6 +237,12 @@ function add_tagging()
   $j("head").append('<link rel="stylesheet" href="https://rawgit.com/vikaskamineni/Semantic_ssad_pro/master/style.css" type="text/css" media="screen, projection"/>');
   
  
+}
+function add_persitence()
+{
+      $j("head").append('<script src="https://rawgit.com/vikaskamineni/Semantic_ssad_pro/master/persist.js">    </script>');
+
+    $j("head").append('<script src="https://rawgit.com/vikaskamineni/Semantic_ssad_pro/master/retrieve.js">    </script>');
 }
 //-----------------------------
 function add_func_tagging()
@@ -379,6 +388,7 @@ function annolet_main() {
     add_tagging();
     add_func_tagging();
     add_search_tagging();
+    add_persistence();
     document.onclick = function(event) {
         if (event === undefined) {
             event = window.event;
@@ -415,6 +425,14 @@ function annolet_main() {
         else if (annolet_btn == 11)
         {
             search_function();
+        }
+        else if (annolet_btn == 11)
+        {
+            store_changes();
+        }
+        else if (annolet_btn == 11)
+        {
+            retrieve_changes();
         }
          else if (annolet_btn===0)
         {
