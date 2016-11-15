@@ -25,7 +25,7 @@ function annolet_createContainer() {
     document.getElementById('annolet-container').innerHTML = "<ul id='annolet' class=annolet-tools-menu>"+
     "<span id='annolet' style='border-radius:10px;  color:orange;font-weight:bold;font-family:monospace; font-size:1.3em'>AnnoLet!</span>"+
     "<span id='annolet' style='color:grey;'>|</span>"+
-    "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=1;'>TagIt!</li>"+
+    "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=1;'>Tagger</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=2;'>Tag_function</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=3;'>Phonetics</li>"+
     "<li id='annolet' class=annolet-tools-menu-item id=highlight-btn onclick='annolet_btn=4;'>Translation</li>"+
@@ -481,14 +481,22 @@ function tagObject(xpath, obj){
 
 //function for highlighting element
 function anno_highlight(xpath) {
-    clicked_element = anno_getElementByXpath(xpath);
-    //if element is already highlighted
-    if (clicked_element.id == "mark" || clicked_element.id == "annolet") {
-        console.log('not permitted');
-    }
-    else {
-      // hightlight selected element and store it
-      $j(anno_getElementByXpath(xpath)).wrapInner("<span id='mark' style='background:yellow;'></span>");
-      annolet_insertIntoObject(xpath); // storing into object
-    }
+  var span = document.createElement("span");
+  var prop = document.createAttribute("property");
+  //var span_id = document.createAttribute("id");
+  //ID = ID + 1;
+  //var SID = ID.toString();
+  if (window.getSelection().toString().length!==0) {
+    prop.value = prompt("Enter the tag name you want to add");
+    //span_id.value = SID;
+    span.setAttributeNode(prop);
+    //span.setAttributeNode(span_id);
+    var sel = window.getSelection();
+    if (sel.rangeCount) {
+      var range = sel.getRangeAt(0).cloneRange();
+      range.surroundContents(span);
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }     
+  } 
 }
