@@ -238,7 +238,7 @@ function add_tagging()
   
  
 }
-function add_persitence()
+function add_persistence()
 {
       $j("head").append('<script src="https://rawgit.com/vikaskamineni/Semantic_ssad_pro/master/persist.js">    </script>');
 
